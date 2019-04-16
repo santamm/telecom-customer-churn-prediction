@@ -25,77 +25,49 @@ The following additional libraries have been used:
 * numpy
 * matplotlib
 * seaborn
+* plotly
 * sklearn
 * warnings
 * time
-* progressbar
-* plot_learning_curve
-* xgboost (see installation notes below)
-
-In order to install XGBoost on Mac, please follow the steps below:
-```
-# This is from https://machinelearningmastery.com/install-xgboost-python-macos/
-# except I didn't install gcc using MacPorts but brew. Also assumed python 3.6
-# already installed
-
-
-# Open a terminal and install latest gcc (gcc-8) in your home dir
-brew install gcc
-
-# Add the following lines to .bash-profile in the home directory
-alias gcc='gcc-8'
-alias cc='gcc-8'
-alias g++='g++-8'
-alias c++='c++-8'
-export CC='gcc-8'
-export CXX='g++-8'
-
-# Install xgboost
-
-git clone --recursive https://github.com/dmlc/xgboost
-
-cd xgboost/
-
-cp make/config.mk ./config.mk
-
-make -j8
-
-# Final install xgboost into python
-
-cd python-package
-
-sudo python setup.py install
-
-# And that should be it! You can verify if everything works with this code
-$ python
-Python 3.6.6 |Anaconda custom (64-bit)| (default, Jun 28 2018, 11:07:29)
-[GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> import xgboost
->>> print("xgboost", xgboost.__version__)
-xgboost 0.81
->>>
-```
-
-
+* graphviz
+* yellowbrick 
+* xgboost
+* imblearn (Synthetic Minority Oversampling TEchnique (SMOTE))
 
 ## Metric<a name="metric"></a>
+The following metrics have been used to compare the model performances:
+* Accuracy
+* Precision
+* Recall
+* F1 score
+* AUC ROC
 
 
 ## File Descriptions <a name="files"></a>
 The Jupyter notebooks included in this project are:
-- <>.ipynb
-
-Python Files:
-- <>.py  utility function to plot learning curves
+- Telecom Customer Churn Prediction.ipynb.ipynb
 
 Data files (under data directory):
-- <>csv  dataframe of feature description
-
-
+- WA_Fn-UseC_-Telco-Customer-Churn.csv
 
 
 ## Results<a name="results"></a>
+The following classifiers have been compared:
+- Logistic Regression
+- Logistic Regression with Recursive Feature Elimination (RFE)
+- SVC
+- Random Forest
+- Decision Tree
+- KNN
+- Naive Bayes
+- LGBM
+- XGBoost
+
+Logistic regression achieved the highest accuracy score of 0.8026166. However, considering the class imbalances, this is not the best metric to compare model performances.
+Logistic Regression with RFE achieved the best recall of 0.8040816.
+Support Vector Machine with Linear Kernel achieved the best F1 score of 0.6433225.
+Random Forest schieved the best precision of 0.7044025
+Naive Bayes achieved the best ROC AUC score of 0.768
 
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
